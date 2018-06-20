@@ -524,7 +524,7 @@ class OASProblem(object):
         # Add the individual surface description to the surface list
         self.surfaces.append(surf_dict)
 
-    def setup_prob(self):
+    def setup_prob(self, **kwargs):
         """
         Short method to select the optimizer. Uses pyOptSparse if available,
         or Scipy's SLSQP otherwise.
@@ -598,7 +598,7 @@ class OASProblem(object):
             profile.start()
 
         # Set up the problem
-        self.prob.setup()
+        self.prob.setup(**kwargs)
 
         # Use warm start from previous db file if desired.
         # Note that we only have access to the unknowns, not the gradient history.
