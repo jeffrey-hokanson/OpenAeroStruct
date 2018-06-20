@@ -780,7 +780,7 @@ class OASProblem(object):
 
         return output
 
-    def setup_struct(self):
+    def setup_struct(self, **kwargs):
         """
         Specific method to add the necessary components to the problem for a
         structural problem.
@@ -869,9 +869,9 @@ class OASProblem(object):
             root.add_metadata(surface['name'] + 'fem_origin', surface['fem_origin'])
 
         # Actually set up the problem
-        self.setup_prob()
+        self.setup_prob(**kwargs)
 
-    def setup_aero(self):
+    def setup_aero(self, **kwargs):
         """
         Specific method to add the necessary components to the problem for an
         aerodynamic problem.
@@ -1020,9 +1020,9 @@ class OASProblem(object):
                   promotes=['CM', 'CL', 'CD', 'v', 'rho', 'cg'])
 
         # Actually set up the problem
-        self.setup_prob()
+        self.setup_prob(**kwargs)
 
-    def setup_aerostruct(self):
+    def setup_aerostruct(self, **kwargs):
         """
         Specific method to add the necessary components to the problem for an
         aerostructural problem.
@@ -1254,4 +1254,4 @@ class OASProblem(object):
                  promotes=['L_equals_W', 'fuelburn', 'CM', 'CL', 'CD', 'v', 'rho', 'cg', 'weighted_obj', 'total_weight'])
 
         # Actually set up the system
-        self.setup_prob()
+        self.setup_prob(**kwargs)
